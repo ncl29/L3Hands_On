@@ -3,16 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Change Text Example</title>
+  <title>L3Hands_On</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      text-align: center;
+      background: #f5f0e1;
+      padding: 50px;
+    }
+
+    .book {
+      width: 400px;
+      height: 500px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2em;
+      line-height: 1.5;
+      text-align: center;
+      margin: auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .page-number {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9em;
+      color: gray;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      background: #d4a373;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #b08968;
+    }
+  </style>
 </head>
 <body>
-  <p id="message">Click the button to change this text.</p>
-  <button onclick="changeText()">Click Me</button>
+
+  <h1>A Journey Through Time</h1>
+  <div class="book" id="poem">
+    <p id="poemText">
+      The morning broke with golden light,<br>
+      A promise made, the world so bright.<br>
+      A traveler stood on paths untold,<br>
+      His heart was young, his dreams were bold.<br><br>
+
+      With steps so firm, he took his way,<br>
+      Through fields of green and skies of gray.<br>
+      Each whispering wind, a tale to weave,<br>
+      A journey vast, no time to grieve.
+    </p>
+    <div class="page-number" id="pageNumber">Page 1</div>
+  </div>
+
+  <button onclick="turnPage()">Turn Page</button>
 
   <script>
-    function changeText() {
-      document.getElementById("message").innerText = "Text changed!";
+    let page = 1;
+
+    function turnPage() {
+      const poemText = document.getElementById("poemText");
+      const pageNumber = document.getElementById("pageNumber");
+
+      if (page === 1) {
+        poemText.innerHTML = `
+          The noon sun blazed with burning fire,<br>
+          His heart still filled with wild desire.<br>
+          Through mountains high and valleys deep,<br>
+          He chased the dreams he swore to keep.<br><br>
+
+          The rivers roared, the echoes called,<br>
+          Yet doubts within his mind enthralled.<br>
+          But onward still, he walked alone,<br>
+          The road ahead was yet unknown.
+        `;
+        page = 2;
+      } else if (page === 2) {
+        poemText.innerHTML = `
+          The evening fell with crimson hue,<br>
+          His journey long, yet purpose true.<br>
+          He climbed the hills, he faced the night,<br>
+          His spirit strong, his soul alight.<br><br>
+
+          And as the stars began to gleam,<br>
+          He found his path was not a dream.<br>
+          For every step and every scar,<br>
+          Had led him here—right where you are.
+        `;
+        page = 3;
+      } else {
+        poemText.innerHTML = `
+          The morning broke with golden light,<br>
+          A promise made, the world so bright.<br>
+          A traveler stood on paths untold,<br>
+          His heart was young, his dreams were bold.<br><br>
+
+          With steps so firm, he took his way,<br>
+          Through fields of green and skies of gray.<br>
+          Each whispering wind, a tale to weave,<br>
+          A journey vast, no time to grieve.
+        `;
+        page = 1;
+      }
+
+      pageNumber.innerText = `Page ${page}`;
     }
   </script>
+
 </body>
 </html>
